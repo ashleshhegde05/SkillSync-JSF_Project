@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSync | Career Recommendations</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/career.css}">
+</head>
+<body>
+
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="app-layout">
+
+        <div th:replace="~{fragments/sidebar :: sidebar('career')}"></div>
+
+        <main class="main-content career-content">
+
+            <section class="career-heading">
+                <p class="career-eyebrow">YOUR CAREER JOURNEY</p>
+                <h1>Career Recommendations</h1>
+                <p>
+                    Explore career paths based on the skills
+                    you have added to SkillSync.
+                </p>
+            </section>
+
+            <section class="career-summary">
+                <div>
+                    <span class="summary-label">Your recorded skills</span>
+                    <strong th:text="${skillCount}">0</strong>
+                </div>
+                <p>
+                    Add more skills to improve the accuracy
+                    of your career matches.
+                </p>
+                <a th:href="@{/skills}" class="career-button">
+                    Manage My Skills →
+                </a>
+            </section>
+
+            <section class="career-grid">
+
+                <article class="career-card"
+                         th:each="career : ${careers}">
+
+                    <div class="career-card-top">
+                        <h2 th:text="${career.title}">Career Title</h2>
+                        <span class="match-score"
+                              th:text="${career.matchPercentage + '% match'}">
+                            0% match
+                        </span>
+                    </div>
+
+                    <p class="career-description"
+                       th:text="${career.description}">
+                        Career description
+                    </p>
+
+                    <div class="match-track">
+                        <div class="match-fill"
+                             th:style="'width:' + ${career.matchPercentage} + '%'">
+                        </div>
+                    </div>
+
+                    <div class="career-skills">
+                        <h3>Skills you have</h3>
+
+                        <p th:if="${#lists.isEmpty(career.matchedSkills)}">
+                            No matching skills recorded yet.
+                        </p>
+
+                        <span class="skill-tag"
+                              th:each="skill : ${career.matchedSkills}"
+                              th:text="${skill}">
+                            Skill
+                        </span>
+                    </div>
+
+                    <div class="career-skills">
+                        <h3>Skills to learn next</h3>
+
+                        <span class="skill-tag missing-tag"
+                              th:each="skill : ${career.missingSkills}"
+                              th:text="${skill}">
+                            Missing skill
+                        </span>
+                    </div>
+
+                    <a th:href="@{/learning}" class="career-link">
+                        Explore Learning Resources →
+                    </a>
+
+                </article>
+
+            </section>
+
+            <footer class="footer">
+                © 2026 SkillSync · Student Skills and Career Readiness Portal
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>

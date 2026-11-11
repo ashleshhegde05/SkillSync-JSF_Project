@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<header class="topbar" th:fragment="navbar">
+
+    <a th:href="@{/dashboard}" class="brand">
+        <span class="brand-mark">◆</span>
+        <span style="color: #172554;">Skill<span>Sync</span></span>
+    </a>
+
+    <div class="search-box">
+        <input
+            type="search"
+            placeholder="Search skills, courses, or opportunities..."
+            aria-label="Search">
+    </div>
+
+    <div class="topbar-profile">
+        <div class="avatar"
+             th:text="${#strings.substring(fullName, 0, 1).toUpperCase()}">
+            S
+        </div>
+
+        <div class="profile-details">
+            <div class="profile-name" th:text="${fullName}">
+                Student Name
+            </div>
+            <span class="profile-role">Student</span>
+        </div>
+    </div>
+
+</header>
+
+</body>
+</html>

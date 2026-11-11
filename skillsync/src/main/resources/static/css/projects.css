@@ -1,0 +1,405 @@
+
+/* ===== My Projects Page Only ===== */
+
+.projects-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.projects-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.projects-eyebrow {
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 1.3px;
+    margin: 0 0 7px;
+}
+
+.projects-heading h1 {
+    color: #172554;
+    font-size: 28px;
+    margin: 0 0 8px;
+}
+
+.projects-heading > div > p:last-child {
+    color: #64748b;
+    margin: 0;
+    font-size: 14px;
+}
+
+.project-count {
+    padding: 9px 14px;
+    border-radius: 20px;
+    background: #eff5ff;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.add-project-panel,
+.saved-projects-panel {
+    margin-bottom: 22px;
+    padding: 24px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 23px;
+}
+
+.section-heading h2 {
+    color: #172554;
+    font-size: 18px;
+    margin: 0 0 6px;
+}
+
+.section-heading p {
+    color: #64748b;
+    font-size: 13px;
+    margin: 0;
+}
+
+.section-symbol {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #eaf1ff;
+    color: #2563eb;
+    font-size: 25px;
+}
+
+.project-form-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+}
+
+.project-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.project-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.project-field label {
+    color: #334155;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.project-field input,
+.project-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    border: 1px solid #dce4f0;
+    border-radius: 9px;
+    background: #fbfcff;
+    color: #172554;
+    font: inherit;
+    outline: none;
+}
+
+.project-field input {
+    height: 45px;
+}
+
+.project-field textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.project-field input:focus,
+.project-field textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
+    background: white;
+}
+
+.project-field small {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.project-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 22px;
+}
+
+.add-project-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 14px;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.add-project-button:hover {
+    background: #1d4ed8;
+}
+
+.projects-empty {
+    padding: 36px 16px;
+    text-align: center;
+    background: #f8faff;
+    border: 1px dashed #d8e3f5;
+    border-radius: 12px;
+}
+
+.empty-project-icon {
+    display: grid;
+    place-items: center;
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 14px;
+    border-radius: 15px;
+    background: #eaf1ff;
+    color: #2563eb;
+    font-size: 28px;
+}
+
+.projects-empty h3 {
+    color: #172554;
+    font-size: 16px;
+    margin: 0 0 8px;
+}
+
+.projects-empty p {
+    color: #64748b;
+    font-size: 13px;
+    margin: 0;
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.project-card {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: white;
+}
+
+.project-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 15px;
+}
+
+.project-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #eaf1ff;
+    color: #2563eb;
+    font-size: 22px;
+}
+
+.project-card-title {
+    min-width: 0;
+}
+
+.project-card-title h3 {
+    color: #172554;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+    margin: 2px 0 7px;
+}
+
+.project-date {
+    color: #64748b;
+    font-size: 12px;
+    margin: 0;
+}
+
+.project-description {
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    margin: 0 0 18px;
+}
+
+.muted-description {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.technology-label {
+    width: 100%;
+    color: #64748b;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 0.8px;
+    margin-bottom: 3px;
+}
+
+.technology-badge {
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+.project-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-top: 15px;
+    border-top: 1px solid #e9edf5;
+}
+
+.view-project-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+}
+
+.view-project-link:hover {
+    text-decoration: underline;
+}
+
+.delete-project-button {
+    padding: 8px 11px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: white;
+    color: #dc2626;
+    font-size: 12px;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.delete-project-button:hover {
+    background: #fef2f2;
+}
+
+.project-alert {
+    padding: 12px 15px;
+    border-radius: 9px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.success-alert {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #047857;
+}
+
+.error-alert {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+}
+
+@media (max-width: 1000px) {
+    .project-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .projects-heading {
+        align-items: flex-start;
+    }
+
+    .projects-heading h1 {
+        font-size: 24px;
+    }
+
+    .add-project-panel,
+    .saved-projects-panel {
+        padding: 17px;
+    }
+
+    .project-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-field.full-width {
+        grid-column: auto;
+    }
+
+    .project-count {
+        font-size: 11px;
+        padding: 7px 10px;
+    }
+}
+/* Add and Remove Project buttons */
+.add-project-button {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.add-project-button:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+}
+
+/* Plus button */
+#addProjectBtn {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove button */
+.remove-project-button {
+    margin-top: 15px;
+}

@@ -1,0 +1,270 @@
+
+/* ===== My Skills Page ===== */
+
+.skills-eyebrow {
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 1.3px;
+    margin-bottom: 7px;
+}
+
+.skills-summary {
+    background: linear-gradient(115deg, #17356d, #2563eb);
+    color: white;
+    padding: 25px 28px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.13);
+}
+
+.summary-label {
+    font-size: 13px;
+    color: #dbeafe;
+}
+
+.summary-number {
+    display: block;
+    font-size: 35px;
+    line-height: 1.4;
+    margin: 3px 0;
+}
+
+.skills-summary p {
+    font-size: 12px;
+    color: #dbeafe;
+}
+
+.summary-symbol {
+    font-size: 55px;
+    color: #bfdbfe;
+    padding: 0 15px;
+}
+
+.add-skill-panel,
+.saved-skills-panel {
+    margin-bottom: 22px;
+}
+
+.skill-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) auto;
+    gap: 17px;
+    align-items: end;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    font-weight: 650;
+    font-size: 13px;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    min-width: 0;
+    height: 45px;
+    padding: 0 13px;
+    background: #fbfcff;
+    border: 1px solid #dce4f0;
+    border-radius: 9px;
+    color: #172554;
+    outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
+    background: white;
+}
+
+.add-skill-button {
+    height: 45px;
+    white-space: nowrap;
+}
+
+.skill-count-badge {
+    padding: 7px 11px;
+    border-radius: 20px;
+    background: #eff5ff;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.skills-empty {
+    padding: 32px 15px;
+    text-align: center;
+    background: #f8faff;
+    border: 1px dashed #d8e3f5;
+    border-radius: 12px;
+}
+
+.skills-empty h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.skills-empty p {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.skill-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px 5px;
+    border-bottom: 1px solid #e9edf5;
+}
+
+.skill-row:last-child {
+    border-bottom: none;
+    padding-bottom: 2px;
+}
+
+.skill-symbol {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+    background: #eaf1ff;
+    color: #2563eb;
+    font-size: 21px;
+}
+
+.skill-information {
+    flex: 1;
+    min-width: 0;
+}
+
+.skill-information h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    overflow-wrap: anywhere;
+}
+
+.proficiency-badge {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.level-beginner {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.level-intermediate {
+    color: #92400e;
+    background: #fef3c7;
+}
+
+.level-advanced {
+    color: #1d4ed8;
+    background: #dbeafe;
+}
+
+.delete-skill-button {
+    padding: 8px 11px;
+    border: 1px solid #fecaca;
+    background: white;
+    color: #dc2626;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.delete-skill-button:hover {
+    background: #fef2f2;
+}
+
+.logout-link {
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: inherit;
+}
+
+.skills-alert {
+    padding: 12px 15px;
+    border-radius: 9px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.success-alert {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #047857;
+}
+
+.error-alert {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+}
+
+@media (max-width: 950px) {
+    .skill-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .add-skill-button {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+}
+
+@media (max-width: 520px) {
+    .skill-form {
+        grid-template-columns: 1fr;
+    }
+
+    .add-skill-button {
+        width: 100%;
+        grid-column: auto;
+    }
+
+    .skills-summary {
+        padding: 21px;
+    }
+
+    .summary-symbol {
+        font-size: 40px;
+        padding: 0;
+    }
+
+    .skill-row {
+        gap: 9px;
+    }
+
+    .delete-skill-button {
+        padding: 7px 8px;
+    }
+    
+}

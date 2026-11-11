@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<aside class="sidebar" th:fragment="sidebar(activePage)">
+
+    <p class="sidebar-label">Workspace</p>
+
+    <nav class="nav-links">
+
+        <a th:href="@{/dashboard}"
+           class="nav-link"
+           th:classappend="${activePage == 'dashboard'} ? ' active' : ''">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-text">Dashboard</span>
+        </a>
+
+        <a th:href="@{/profile}"
+           class="nav-link"
+           th:classappend="${activePage == 'profile'} ? ' active' : ''">
+            <span class="nav-icon">♙</span>
+            <span class="nav-text">My Profile</span>
+        </a>
+
+        <a th:href="@{/skills}"
+           class="nav-link"
+           th:classappend="${activePage == 'skills'} ? ' active' : ''">
+            <span class="nav-icon">✧</span>
+            <span class="nav-text">My Skills</span>
+        </a>
+
+        <a th:href="@{/projects}"
+           class="nav-link"
+           th:classappend="${activePage == 'projects'} ? ' active' : ''">
+            <span class="nav-icon">▣</span>
+            <span class="nav-text">My Projects</span>
+        </a>
+        
+<a th:href="@{/resume}"
+   class="nav-link"
+   th:classappend="${activePage == 'resume'} ? ' active' : ''">
+    <span class="nav-icon">📄</span>
+    <span class="nav-text">Resume Builder</span>
+</a>
+
+
+        <a th:href="@{/career}"
+           class="nav-link"
+           th:classappend="${activePage == 'career'} ? ' active' : ''">
+            <span class="nav-icon">◎</span>
+            <span class="nav-text">Career Recommendations</span>
+        </a>
+
+        <a th:href="@{/learning}"
+           class="nav-link"
+           th:classappend="${activePage == 'learning'} ? ' active' : ''">
+            <span class="nav-icon">▤</span>
+            <span class="nav-text">Learning Resources</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-promo">
+        <div style="font-size: 28px; margin-bottom: 8px;">🚀</div>
+
+        <h3>Build Your Future</h3>
+
+        <p>
+            Keep learning, keep growing.
+            Take the next step in your career with SkillSync.
+        </p>
+    </div>
+
+    <div class="sidebar-bottom">
+
+        <p class="sidebar-label">Account</p>
+
+        <nav class="nav-links">
+
+
+            <form th:action="@{/logout}" method="post">
+                <input type="hidden"
+                       th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}">
+
+                <button type="submit"
+                        class="nav-link"
+                        style="width: 100%; background: transparent;
+                               border: none; cursor: pointer;
+                               text-align: left; color: inherit;">
+                    <span class="nav-icon">↪</span>
+                    <span class="nav-text">Logout</span>
+                </button>
+            </form>
+
+        </nav>
+
+    </div>
+
+</aside>
+
+</body>
+</html>

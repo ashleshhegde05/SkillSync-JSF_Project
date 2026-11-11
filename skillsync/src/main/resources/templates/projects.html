@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects | SkillSync</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/projects.css}">
+</head>
+<body>
+
+    <!-- Shared navbar: do not redesign -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="app-layout">
+
+        <!-- Shared sidebar: only the active item changes -->
+        <div th:replace="~{fragments/sidebar :: sidebar('projects')}"></div>
+
+        <!-- Main content -->
+        <main class="main-content projects-content">
+
+            <div class="projects-heading">
+                <div>
+                    <p class="projects-eyebrow">YOUR PORTFOLIO</p>
+                    <h1>My Projects</h1>
+                    <p>Showcase your work, skills, and achievements.</p>
+                </div>
+
+                <span class="project-count">
+                    <span th:text="${projectCount}">0</span>
+                    Projects
+                </span>
+            </div>
+
+            <!-- Feedback messages -->
+            <div class="project-alert success-alert"
+                 th:if="${successMessage}"
+                 th:text="${successMessage}">
+            </div>
+
+            <div class="project-alert error-alert"
+                 th:if="${errorMessage}"
+                 th:text="${errorMessage}">
+            </div>
+
+            <!-- Add project form -->
+         
+<section class="panel add-project-panel">
+
+    <div class="section-heading">
+        <div>
+            <h2>Add a Project</h2>
+            <p>Add one or more projects to your portfolio.</p>
+        </div>
+
+        <button type="button"
+        class="add-project-button"
+        id="addProjectBtn"
+        title="Add another project">
+    +
+</button>
+    </div>
+
+    <form th:action="@{/projects/add}" method="post" id="projectsForm">
+
+        <div id="projectForms">
+
+            <div class="project-entry">
+
+                <div class="project-form-grid">
+
+                    <div class="project-field full-width">
+                        <label>Project Name *</label>
+                        <input type="text"
+                               name="projectName"
+                               maxlength="150"
+                               placeholder="e.g. Student Management System"
+                               required>
+                    </div>
+
+                    <div class="project-field full-width">
+                        <label>Project Description</label>
+                        <textarea name="description"
+                                  rows="4"
+                                  maxlength="1000"
+                                  placeholder="What does your project do?"></textarea>
+                    </div>
+
+                    <div class="project-field full-width">
+                        <label>Technologies Used</label>
+                        <input type="text"
+                               name="technologies"
+                               maxlength="300"
+                               placeholder="Java, Spring Boot, MySQL">
+                        <small>Separate technologies with commas.</small>
+                    </div>
+
+                    <div class="project-field full-width">
+                        <label>Project Link (Optional)</label>
+                        <input type="url"
+                               name="projectLink"
+                               maxlength="500"
+                               placeholder="https://github.com/username/project">
+                    </div>
+
+                </div>
+
+                <hr class="project-entry-divider">
+
+            </div>
+
+        </div>
+
+        <div class="project-form-actions">
+            <button type="submit" class="add-project-button">
+                Save Projects
+            </button>
+        </div>
+
+    </form>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const addButton = document.getElementById("addProjectBtn");
+    const projectForms = document.getElementById("projectForms");
+
+    addButton.addEventListener("click", function () {
+
+        const newProject = document.createElement("div");
+
+        newProject.className = "project-entry";
+
+        newProject.innerHTML = `
+            <div class="project-form-grid">
+
+                <div class="project-field full-width">
+                    <label>Project Name *</label>
+                    <input type="text" name="projectName"
+                           maxlength="150"
+                           placeholder="Enter project name" required>
+                </div>
+
+                <div class="project-field full-width">
+                    <label>Project Description</label>
+                    <textarea name="description" rows="4"
+                              maxlength="1000"
+                              placeholder="Describe your project"></textarea>
+                </div>
+
+                <div class="project-field full-width">
+                    <label>Technologies Used</label>
+                    <input type="text" name="technologies"
+                           maxlength="300"
+                           placeholder="Java, Python, MySQL">
+                </div>
+
+                <div class="project-field full-width">
+                    <label>Project Link (Optional)</label>
+                    <input type="url" name="projectLink"
+                           maxlength="500"
+                           placeholder="https://github.com/username/project">
+                </div>
+
+            </div>
+
+           <button type="button" class="add-project-button remove-project-button">
+    Remove This Project
+</button>
+
+            <hr class="project-entry-divider">
+        `;
+
+        projectForms.appendChild(newProject);
+
+    });
+
+    projectForms.addEventListener("click", function (event) {
+
+        if (event.target.classList.contains("remove-project-button")) {
+            event.target.closest(".project-entry").remove();
+        }
+
+    });
+
+});
+</script>
+
+
+            <!-- Saved projects -->
+            <section class="panel saved-projects-panel">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Your Projects</h2>
+                        <p>Projects you've added to your portfolio.</p>
+                    </div>
+                </div>
+
+                <!-- Empty state -->
+                <div class="projects-empty"
+                     th:if="${#lists.isEmpty(projects)}">
+
+                    <div class="empty-project-icon">▣</div>
+                    <h3>No projects yet</h3>
+                    <p>Add your first project above to start building your portfolio.</p>
+
+                </div>
+
+                <!-- Project list -->
+                <div class="project-list" th:unless="${#lists.isEmpty(projects)}">
+
+                    <article class="project-card"
+                             th:each="project : ${projects}">
+
+                        <div class="project-card-top">
+                            <div class="project-icon">▣</div>
+
+                            <div class="project-card-title">
+                                <h3 th:text="${project.projectName}">
+                                    Project Name
+                                </h3>
+
+                                <p class="project-date"
+                                   th:if="${project.createdAt != null}"
+                                   th:text="${#temporals.format(project.createdAt, 'dd MMM yyyy')}">
+                                    24 Oct 2026
+                                </p>
+                            </div>
+                        </div>
+
+                        <p class="project-description"
+                           th:if="${project.description != null
+                                   and !project.description.isEmpty()}"
+                           th:text="${project.description}">
+                            Project description
+                        </p>
+
+                        <p class="project-description muted-description"
+                           th:if="${project.description == null
+                                   or project.description.isEmpty()}">
+                            No description provided.
+                        </p>
+
+                        <div class="technology-list"
+                             th:if="${project.technologies != null
+                                     and !project.technologies.isEmpty()}">
+
+                            <span class="technology-label">TECHNOLOGIES</span>
+
+                            <span class="technology-badge"
+                                  th:each="technology : ${#strings.arraySplit(project.technologies, ',')}"
+                                  th:text="${technology.trim()}">
+                                Java
+                            </span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:if="${project.projectLink != null
+                                      and !project.projectLink.isEmpty()}"
+                               th:href="${project.projectLink}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="view-project-link">
+                                View Project ↗
+                            </a>
+
+                            <form th:action="@{/projects/delete/{id}(id=${project.id})}"
+                                  method="post"
+                                  onsubmit="return confirm('Are you sure you want to delete this project?');">
+
+                                <input type="hidden"
+                                       th:name="${_csrf.parameterName}"
+                                       th:value="${_csrf.token}">
+
+                                <button type="submit"
+                                        class="delete-project-button">
+                                    Delete
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>

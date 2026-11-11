@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSync - Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: radial-gradient(
+                circle at top right,
+                #334f85 0%,
+                #1e3157 40%,
+                #101a2e 100%
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 90px 15px 20px;
+        }
+
+        .public-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(16, 26, 46, 0.88);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .brand {
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: #93c5fd;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #93c5fd;
+        }
+
+        .nav-links .register-link {
+            padding: 9px 17px;
+            background: #2563eb;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .container {
+    background: rgba(255, 255, 255, 0.88);
+    padding: 30px;
+    width: 450px;
+    max-width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+}
+
+        h2 {
+            text-align: center;
+            color: #2563eb;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 11px;
+            margin-top: 22px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .error-message {
+            color: #dc2626;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .public-navbar {
+                padding: 0 16px;
+            }
+
+            .brand {
+                font-size: 21px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="public-navbar">
+    <a th:href="@{/}" class="brand">
+        Skill<span>Sync</span>
+    </a>
+
+    <nav class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/register}" class="register-link">Register</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Welcome Back!</h2>
+
+    <p>Login to your SkillSync account</p>
+
+    <form th:action="@{/login}" method="post">
+        <input type="hidden"
+               th:name="${_csrf.parameterName}"
+               th:value="${_csrf.token}">
+
+        <label for="email">Email</label>
+        <input type="email"
+               id="email"
+               name="email"
+               placeholder="Enter your email"
+               autocomplete="email"
+               required>
+
+        <label for="password">Password</label>
+        <input type="password"
+               id="password"
+               name="password"
+               placeholder="Enter your password"
+               autocomplete="current-password"
+               required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p th:if="${param.error}" class="error-message">
+        Invalid email or password.
+    </p>
+
+    <p th:if="${param.logout}">
+        You have been logged out successfully.
+    </p>
+
+    <p>
+        Don't have an account?
+        <a th:href="@{/register}">Register here</a>
+    </p>
+</div>
+
+</body>
+</html>

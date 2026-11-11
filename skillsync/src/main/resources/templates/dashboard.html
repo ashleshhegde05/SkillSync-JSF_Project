@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillSync | Student Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <!-- ========== TOP NAVBAR ========== -->
+    
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+
+
+    <!-- ========== SIDEBAR + MAIN CONTENT ========== -->
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <p class="sidebar-label">Workspace</p>
+
+            <nav class="nav-links">
+
+                <a th:href="@{/dashboard}" class="nav-link active">
+                    <span class="nav-icon">⌂</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+                <a th:href="@{/profile}" class="nav-link">
+                    <span class="nav-icon">♙</span>
+                    <span class="nav-text">My Profile</span>
+                </a>
+
+                <a th:href="@{/skills}" class="nav-link">
+                    <span class="nav-icon">✧</span>
+                    <span class="nav-text">My Skills</span>
+                </a>
+
+                <a th:href="@{/projects}" class="nav-link">
+                    <span class="nav-icon">▣</span>
+                    <span class="nav-text">My Projects</span>
+                </a>
+
+                <a th:href="@{/career}" class="nav-link">
+                    <span class="nav-icon">◎</span>
+                    <span class="nav-text">Career Recommendations</span>
+                </a>
+
+                <a th:href="@{/learning}" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    <span class="nav-text">Learning Resources</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-promo">
+                <div style="font-size: 28px; margin-bottom: 8px;">
+                    🚀
+                </div>
+
+                <h3>Build Your Future</h3>
+
+                <p>
+                    Keep learning, keep growing.
+                    Take the next step in your career with SkillSync.
+                </p>
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <p class="sidebar-label">Account</p>
+
+                <nav class="nav-links">
+
+                    <form th:action="@{/logout}" method="post">
+                        <input type="hidden"
+                               th:name="${_csrf.parameterName}"
+                               th:value="${_csrf.token}">
+
+                        <button type="submit"
+                                class="nav-link"
+                                style="width: 100%; background: transparent;
+                                       border: none; cursor: pointer;
+                                       text-align: left; color: inherit;">
+                            <span class="nav-icon">↪</span>
+                            <span class="nav-text">Logout</span>
+                        </button>
+                    </form>
+
+                </nav>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN DASHBOARD -->
+        <main class="main-content">
+
+            <!-- WELCOME SECTION -->
+            <section class="welcome-banner">
+
+                <div>
+                    <p style="color: #2563eb; font-weight: 700;
+                              font-size: 12px; text-transform: uppercase;
+                              letter-spacing: 1px;">
+                        STUDENT WORKSPACE
+                    </p>
+
+                    <h2>
+                        Welcome back,
+                        <span th:text="${fullName}">Student</span>!
+                    </h2>
+
+                    <p>
+                        Your journey to career readiness starts here.
+                        Build valuable skills, showcase your projects,
+                        and prepare for new opportunities.
+                    </p>
+
+                    <div class="welcome-meta">
+                        ✉ &nbsp;
+                        <span th:text="${email}">student@example.com</span>
+                        &nbsp; · &nbsp; Student Account
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- PAGE HEADING -->
+            <section class="page-heading">
+                <h1>Your Overview</h1>
+                <p>Track your progress and continue developing your career.</p>
+            </section>
+
+
+            <!-- SUMMARY CARDS -->
+            <section class="stats-grid">
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">My Skills</span>
+                        <span class="stat-icon">✧</span>
+                    </div>
+
+                    <strong class="stat-number">0</strong>
+
+                    <p class="stat-description">
+                        Skills added to your profile
+                    </p>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">My Projects</span>
+                        <span class="stat-icon">▣</span>
+                    </div>
+
+                    <strong class="stat-number">0</strong>
+
+                    <p class="stat-description">
+                        Projects in your portfolio
+                    </p>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Career Readiness</span>
+                        <span class="stat-icon">◎</span>
+                    </div>
+
+                    <strong class="stat-number">—</strong>
+
+                    <p class="stat-description">
+                        Complete your skills assessment
+                    </p>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Learning Progress</span>
+                        <span class="stat-icon">▤</span>
+                    </div>
+
+                    <strong class="stat-number">0</strong>
+
+                    <p class="stat-description">
+                        Learning activities completed
+                    </p>
+                </article>
+
+            </section>
+
+
+            <!-- SKILLS + RECOMMENDATIONS -->
+            <section class="content-grid">
+
+                <!-- SKILL GROWTH -->
+                <article class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Your Skill Growth</h2>
+                            <p class="panel-subtitle">
+                                Build your professional skill profile
+                            </p>
+                        </div>
+
+                        <a th:href="@{/skills}" class="text-link">
+                            Explore →
+                        </a>
+                    </div>
+
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">📈</div>
+
+                        <h3>Start building your skills</h3>
+
+                        <p>
+                            Add the skills you already have and identify
+                            the areas you want to improve.
+                        </p>
+
+                        <a th:href="@{/skills}" class="btn">
+                            + Add Your Skills
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CAREER RECOMMENDATIONS -->
+                <article class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Explore Career Paths</h2>
+                            <p class="panel-subtitle">
+                                Discover areas to develop
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="recommendation-list">
+
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">⌘</div>
+
+                            <div>
+                                <h3>Web Development</h3>
+                                <p>
+                                    Explore frontend and backend development.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">▥</div>
+
+                            <div>
+                                <h3>Data Analytics</h3>
+                                <p>
+                                    Discover data analysis and visualization.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">◈</div>
+
+                            <div>
+                                <h3>Cloud Computing</h3>
+                                <p>
+                                    Learn about cloud platforms and services.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- RECENT ACTIVITY -->
+            <section class="panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Recent Activity</h2>
+                        <p class="panel-subtitle">
+                            Your latest learning and career updates
+                        </p>
+                    </div>
+                </div>
+
+                <div class="activity-row">
+                    <span class="activity-dot"></span>
+
+                    <div>
+                        <strong>Welcome to SkillSync</strong>
+                        <p>
+                            Your account is ready. Start by building
+                            your student profile.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="activity-row">
+                    <span class="activity-dot"></span>
+
+                    <div>
+                        <strong>Next step: Add your skills</strong>
+                        <p>
+                            Record your technical skills and areas of interest.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                © 2026 SkillSync · Student Skills and Career Readiness Portal
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

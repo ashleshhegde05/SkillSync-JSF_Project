@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Preview | SkillSync</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/resume.css}">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="app-layout">
+
+    <div th:replace="~{fragments/sidebar :: sidebar('resume')}"></div>
+
+    <main class="main-content">
+
+        <div class="resume-heading no-print">
+            <div>
+                <p class="eyebrow">CAREER TOOLS</p>
+                <h1>Resume Preview</h1>
+            </div>
+
+            <button onclick="window.print()" class="save-resume-btn">
+                Download PDF
+            </button>
+        </div>
+
+        <div class="resume-preview-container">
+
+            <div class="resume-paper">
+
+                <!-- HEADER -->
+                <header class="cv-header">
+
+                    <h1 th:text="${resume.fullName}"></h1>
+
+                    <h3 th:if="${resume.professionalTitle != null
+                                and !resume.professionalTitle.isEmpty()}"
+                        th:text="${resume.professionalTitle}">
+                    </h3>
+
+                    <div class="cv-contact">
+
+                        <span th:if="${resume.location != null
+                                      and !resume.location.isEmpty()}"
+                              th:text="${resume.location}"></span>
+
+                        <span th:if="${resume.phone != null
+                                      and !resume.phone.isEmpty()}"
+                              th:text="${resume.phone}"></span>
+
+                        <span th:if="${resume.email != null
+                                      and !resume.email.isEmpty()}"
+                              th:text="${resume.email}"></span>
+
+                        <span th:if="${resume.github != null
+                                      and !resume.github.isEmpty()}"
+                              th:text="${resume.github}"></span>
+
+                        <span th:if="${resume.linkedIn != null
+                                      and !resume.linkedIn.isEmpty()}"
+                              th:text="${resume.linkedIn}"></span>
+
+                    </div>
+
+                </header>
+
+                <!-- CAREER OBJECTIVE -->
+                <section class="cv-section"
+                         th:if="${resume.careerObjective != null
+                                 and !resume.careerObjective.isEmpty()}">
+
+                    <h2>CAREER OBJECTIVE</h2>
+
+                    <p th:text="${resume.careerObjective}"></p>
+
+                </section>
+
+                <!-- EDUCATION -->
+                <section class="cv-section"
+                         th:if="${resume.educationDetails != null
+                                 and !resume.educationDetails.isEmpty()}">
+
+                    <h2>EDUCATION</h2>
+
+                    <p class="cv-content"
+                       th:text="${resume.educationDetails}"></p>
+
+                </section>
+
+                <!-- TECHNICAL SKILLS -->
+                <section class="cv-section"
+                         th:if="${resume.skills != null
+                                 and !resume.skills.isEmpty()}">
+
+                    <h2>TECHNICAL SKILLS</h2>
+
+                    <p class="cv-content"
+                       th:text="${resume.skills}"></p>
+
+                </section>
+
+                <!-- INTERNSHIP EXPERIENCE -->
+                <section class="cv-section"
+                         th:if="${resume.internshipExperience != null
+                                 and !resume.internshipExperience.isEmpty()}">
+
+                    <h2>INTERNSHIP EXPERIENCE</h2>
+
+                    <p class="cv-content"
+                       th:text="${resume.internshipExperience}"></p>
+
+                </section>
+
+                <!-- PROJECTS -->
+                <section class="cv-section"
+                         th:if="${resume.projects != null
+                                 and !resume.projects.isEmpty()}">
+
+                    <h2>PROJECTS</h2>
+
+                    <p class="cv-content"
+                       th:text="${resume.projects}"></p>
+
+                </section>
+
+                <!-- CERTIFICATIONS -->
+                <section class="cv-section"
+                         th:if="${resume.certificationsAchievements != null
+                                 and !resume.certificationsAchievements.isEmpty()}">
+
+                    <h2>CERTIFICATIONS &amp; ACHIEVEMENTS</h2>
+
+                    <p class="cv-content"
+                       th:text="${resume.certificationsAchievements}"></p>
+
+                </section>
+
+                <!-- ADDITIONAL INFORMATION -->
+                <section class="cv-section"
+                         th:if="${resume.additionalInformation != null
+                                 and !resume.additionalInformation.isEmpty()}">
+
+                    <h2>ADDITIONAL INFORMATION</h2>
+
+                    <p class="cv-content"
+                       th:text="${resume.additionalInformation}"></p>
+
+                </section>
+
+            </div>
+
+        </div>
+
+        <div class="preview-actions no-print">
+            <a th:href="@{/resume}" class="edit-resume-btn">
+                Edit Resume
+            </a>
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

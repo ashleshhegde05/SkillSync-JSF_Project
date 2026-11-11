@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Resources | SkillSync</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/learning.css}">
+</head>
+<body>
+
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="app-layout">
+
+        <div th:replace="~{fragments/sidebar :: sidebar('learning')}"></div>
+
+        <main class="main-content learning-content">
+
+            <div class="learning-header">
+                <p class="eyebrow">KEEP GROWING</p>
+                <h1>Learning Resources</h1>
+                <p>
+                    Discover useful resources to build your skills
+                    and prepare for your career.
+                </p>
+            </div>
+
+            <section class="resource-section">
+                <h2>Explore Learning Topics</h2>
+
+                <div class="resource-grid">
+
+                    <article class="resource-card">
+                        <div class="resource-icon">💻</div>
+                        <h3>Programming</h3>
+                        <p>Learn programming fundamentals, Java, Python and problem-solving.</p>
+                        <a href="https://www.w3schools.com/"
+                           target="_blank" rel="noopener noreferrer">
+                            Start Learning ↗
+                        </a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">🌐</div>
+                        <h3>Web Development</h3>
+                        <p>Explore HTML, CSS, JavaScript and modern web development.</p>
+                        <a href="https://developer.mozilla.org/"
+                           target="_blank" rel="noopener noreferrer">
+                            Start Learning ↗
+                        </a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">📊</div>
+                        <h3>Data Analytics</h3>
+                        <p>Build your knowledge of Python, SQL and data analysis.</p>
+                        <a href="https://www.kaggle.com/learn"
+                           target="_blank" rel="noopener noreferrer">
+                            Start Learning ↗
+                        </a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">☁️</div>
+                        <h3>Cloud Computing</h3>
+                        <p>Understand cloud services, infrastructure and deployment.</p>
+                        <a href="https://aws.amazon.com/training/"
+                           target="_blank" rel="noopener noreferrer">
+                            Start Learning ↗
+                        </a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">🧠</div>
+                        <h3>DSA & Problem Solving</h3>
+                        <p>Practice coding problems and improve your logical thinking.</p>
+                        <a href="https://leetcode.com/"
+                           target="_blank" rel="noopener noreferrer">
+                            Start Practicing ↗
+                        </a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">🎯</div>
+                        <h3>Interview Preparation</h3>
+                        <p>Prepare for technical interviews and coding assessments.</p>
+                        <a href="https://www.geeksforgeeks.org/"
+                           target="_blank" rel="noopener noreferrer">
+                            Start Preparing ↗
+                        </a>
+                    </article>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>

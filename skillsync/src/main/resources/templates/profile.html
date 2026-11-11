@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | SkillSync</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+
+    <!-- Shared top navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        
+<!-- SIDEBAR -->
+
+<div th:replace="~{fragments/sidebar :: sidebar('profile')}"></div>
+
+
+
+        <!-- Main content -->
+        <main class="main-content profile-content">
+
+            <div class="profile-heading">
+                <div>
+                    <h1>My Profile</h1>
+                    <p>Manage your personal and academic information.</p>
+                </div>
+            </div>
+
+            <!-- Success and error messages -->
+            <div class="profile-message success-message"
+                 th:if="${successMessage}"
+                 th:text="${successMessage}">
+            </div>
+
+            <div class="profile-message error-message"
+                 th:if="${errorMessage}"
+                 th:text="${errorMessage}">
+            </div>
+
+            <!-- Profile card -->
+            <section class="panel profile-card">
+
+                <div class="profile-card-header">
+                    <div class="large-avatar"
+                         th:text="${#strings.substring(fullName, 0, 1).toUpperCase()}">
+                        S
+                    </div>
+
+                    <div>
+                        <h2 th:text="${fullName}">Student Name</h2>
+                        <p th:text="${email}">student@example.com</p>
+                        <span class="student-badge">Student Account</span>
+                    </div>
+                </div>
+
+                <form th:action="@{/profile/update}" method="post">
+
+                    <h3 class="form-section-title">Personal Information</h3>
+
+                    <div class="profile-form-grid">
+
+                        <div class="profile-field">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text"
+                                   id="fullName"
+                                   name="fullName"
+                                   th:value="${fullName}"
+                                   maxlength="100"
+                                   required>
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="email">Email Address</label>
+                            <input type="email"
+                                   id="email"
+                                   th:value="${email}"
+                                   readonly>
+                            <small>Email cannot be changed here.</small>
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel"
+                                   id="phoneNumber"
+                                   name="phoneNumber"
+                                   th:value="${phoneNumber}"
+                                   maxlength="15"
+                                   placeholder="Enter your phone number">
+                        </div>
+
+                    </div>
+
+                    <h3 class="form-section-title academic-title">
+                        Academic Information
+                    </h3>
+
+                    <div class="profile-form-grid">
+
+                        <div class="profile-field">
+                            <label for="college">College / University</label>
+                            <input type="text"
+                                   id="college"
+                                   name="college"
+                                   th:value="${college}"
+                                   maxlength="150"
+                                   placeholder="Enter your college name">
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="degree">Degree</label>
+                            <select id="degree" name="degree">
+                                <option value="">Select degree</option>
+                                <option value="B.E."
+                                        th:selected="${degree == 'B.E.'}">B.E.</option>
+                                <option value="B.Tech"
+                                        th:selected="${degree == 'B.Tech'}">B.Tech</option>
+                                <option value="B.Sc"
+                                        th:selected="${degree == 'B.Sc'}">B.Sc</option>
+                                <option value="BCA"
+                                        th:selected="${degree == 'BCA'}">BCA</option>
+                                <option value="M.E."
+                                        th:selected="${degree == 'M.E.'}">M.E.</option>
+                                <option value="M.Tech"
+                                        th:selected="${degree == 'M.Tech'}">M.Tech</option>
+                                <option value="MCA"
+                                        th:selected="${degree == 'MCA'}">MCA</option>
+                                <option value="Other"
+                                        th:selected="${degree == 'Other'}">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="branch">Branch / Specialization</label>
+                            <input type="text"
+                                   id="branch"
+                                   name="branch"
+                                   th:value="${branch}"
+                                   maxlength="100"
+                                   placeholder="e.g. Computer Science">
+                        </div>
+
+                    </div>
+
+                    <div class="profile-form-actions">
+                        <button type="submit" class="save-profile-button">
+                            Save Changes
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
